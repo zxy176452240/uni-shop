@@ -14,8 +14,18 @@
   ,{
       "path" : "pages/user/user",
       "style" :{}
-  }
-  ],
+  }],
+  "subPackages": [{
+    "root": "sub_packages",
+    "pages": [{
+      "path" : "goods_detail/goods_detail",
+      "style" : {}
+    }    ,{
+                    "path" : "goods_list/goods_list",
+                    "style" : {}
+                }
+            ]
+  }],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
 		"navigationBarTitleText": "OnlineShop",
