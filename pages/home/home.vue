@@ -91,7 +91,6 @@
         })
         
         this.floorList = res.message
-        console.log(res);
       },
       
       // 分类导航点击事件
