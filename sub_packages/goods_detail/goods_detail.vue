@@ -1,13 +1,15 @@
 <template>
   <view>
-    user
+    goods_detail
   </view>
 </template>
 
 <script>
   export default {
     data() {
-      return {}
+      return {
+        
+      };
     }
   }
 </script>
