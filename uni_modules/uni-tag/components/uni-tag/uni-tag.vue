@@ -111,10 +111,10 @@
 	$uni-success: #18bc37 !default;
 	$uni-warning: #f3a73f !default;
 	$uni-error: #e43d33 !default;
-	$uni-info: #8f939c !default;
+	$uni-info: #efefee !default;
 
 
-	$tag-default-pd: 4px 7px;
+	$tag-default-pd: 5px 10px;
 	$tag-small-pd: 2px 5px;
 	$tag-mini-pd: 1px 3px;
 

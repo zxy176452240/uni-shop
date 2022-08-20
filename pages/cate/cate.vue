@@ -1,5 +1,8 @@
 <template>
   <view>
+    <!-- 搜索区域 -->
+    <my-search searchURL="/sub_packages/search/search"></my-search>
+    <!-- 主体区域 -->
     <view class="scroll-view-container">
       <!-- 左侧滚动视图区域 -->
       <scroll-view scroll-y="true" class="left-scroll-view" :style="{height: wh + 'px'}">
@@ -44,7 +47,8 @@
     onLoad() {
       // 获取当前设备可用高度
       const sysInfo = uni.getSystemInfoSync()
-      this.wh = sysInfo.windowHeight
+      // 减去搜索区域高度
+      this.wh = sysInfo.windowHeight - 50
       // 获取分类列表数据
       this.getCateList()
     },
@@ -102,7 +106,7 @@
             display: block;
             width: 3px;
             height: 40px;
-            background-color: #C00000;
+            background-color: #4781c3;
             position: absolute;
             top: 50%;
             left: 0;

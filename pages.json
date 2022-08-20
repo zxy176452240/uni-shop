@@ -2,16 +2,13 @@
 	"pages": [{
       "path" : "pages/home/home",
       "style" :{}
-  }
-  ,{
+  },{
       "path" : "pages/cart/cart",
       "style" :{}
-  }
-  ,{
+  },{
       "path" : "pages/cate/cate",
       "style" :{}
-  }
-  ,{
+  },{
       "path" : "pages/user/user",
       "style" :{}
   }],
@@ -23,20 +20,23 @@
       },{
       "path" : "goods_list/goods_list",
       "style" : {}
+      },{
+      "path" : "search/search",
+      "style" : {}
       }
     ]
   }],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
 		"navigationBarTitleText": "OnlineShop",
-		"navigationBarBackgroundColor": "#C00000",
+		"navigationBarBackgroundColor": "#4781c3",
 		"backgroundColor": "#FFFFFF",
 		"app-plus": {
 			"background": "#efeff4"
 		}
 	},
   "tabBar": {
-    "selectedColor": "#C00000",
+    "selectedColor": "#4781c3",
     "list": [
       {
         "pagePath": "pages/home/home",
