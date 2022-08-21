@@ -77,7 +77,7 @@
       // 跳转商品页面
       gotoGoodsList(item3) {
         uni.navigateTo({
-          url:'/sub_packages/goods_list/goods_list?cid=' + item3.cat_id
+          url:'/sub_packages/goods_list/goods_list?cid=' + item3.cat_id + '&name=' + item3.cat_name
         })
       }
     }

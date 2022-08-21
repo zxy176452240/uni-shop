@@ -2,7 +2,7 @@
   <view>
     <!-- 搜索区域 -->
     <view class="search-box">
-      <uni-search-bar :focus="true" @input="input" :radius="100" cancelButton="none" placeholder="请输入想要搜索的商品"></uni-search-bar>
+      <uni-search-bar @focus="true" @input="input" :radius="100" cancelButton="none" placeholder="请输入想要搜索的商品"></uni-search-bar>
     </view>
     
     <!-- 搜索建议列表区域 -->

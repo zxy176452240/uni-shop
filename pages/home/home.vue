@@ -27,13 +27,13 @@
             <view class="floor-img-box">
               
               <!-- 左侧区域 -->
-              <navigator :url="item.product_list[0].url" class="left-img-box">
+              <navigator :url="item.product_list[0].url + '&name=' + item.product_list[0].name" class="left-img-box">
                 <image :src="item.product_list[0].image_src" :style="{width: item.product_list[0].image_width + 'rpx'}" mode="widthFix"></image>
               </navigator>
               
               <!-- 右侧区域 -->
              <view class="right-img-box">
-                <navigator :url="item2.url" class="right-img-item" v-for="(item2,index2) in item.product_list" :key="index2" v-if="index2 !== 0">
+                <navigator :url="item2.url + '&name=' + item2.name" class="right-img-item" v-for="(item2,index2) in item.product_list" :key="index2" v-if="index2 !== 0">
                    <image :src="item2.image_src" mode="widthFix" :style="{width:item2.image_width + 'rpx'}"></image>
                 </navigator>
               </view>
