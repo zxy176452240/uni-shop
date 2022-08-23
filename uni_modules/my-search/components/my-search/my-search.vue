@@ -17,7 +17,7 @@
       // 背景颜色
       bgcolor: {
         type: String,
-        default: '#4781c3'
+        default: '#1E83FF'
       },
       // 圆角尺寸
       radius: {

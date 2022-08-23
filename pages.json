@@ -33,14 +33,14 @@
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
 		"navigationBarTitleText": "OnlineShop",
-		"navigationBarBackgroundColor": "#4781c3",
+		"navigationBarBackgroundColor": "#1E83FF",
 		"backgroundColor": "#FFFFFF",
 		"app-plus": {
 			"background": "#efeff4"
 		}
 	},
   "tabBar": {
-    "selectedColor": "#4781c3",
+    "selectedColor": "#1E83FF",
     "list": [
       {
         "pagePath": "pages/home/home",

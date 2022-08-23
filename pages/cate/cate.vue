@@ -96,7 +96,7 @@
         line-height: 60px;
         text-align: center;
         font-size: 12px;
-          
+        
         &.active {
           position: relative;
           background-color: #ffffff;
@@ -106,7 +106,7 @@
             display: block;
             width: 3px;
             height: 40px;
-            background-color: #4781c3;
+            background-color: #1E83FF;
             position: absolute;
             top: 50%;
             left: 0;

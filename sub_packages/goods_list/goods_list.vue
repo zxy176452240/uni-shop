@@ -11,11 +11,20 @@
         <my-goods :item="item"></my-goods>
       </view>
     </view>
+    
+    <!-- 回到顶部组件 -->
+    <my-backTop :back="back"></my-backTop>
   </view>
 </template>
 
 <script>
+  // 导入混入对象
+  import { backTopMixin } from '@/mixins/backTop.js'
+  
   export default {
+    // 混入对象
+    mixins: [backTopMixin],
+    
     data() {
       return {
         // 请求参数对象
@@ -124,6 +133,11 @@
         this.goodsList = res.message
       },
       
+      // 监听页面滚动事件
+      onPageScroll(e) {
+        // 调用混入的方法
+        this.PageScroll(e)
+      }
     }
   }
 </script>

@@ -94,7 +94,7 @@
         align-items: center;
 
         .goods-price {
-          color: #C00000;
+          color: #007aff;
           font-size: 16px;
         }
       }
