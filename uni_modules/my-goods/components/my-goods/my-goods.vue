@@ -3,13 +3,17 @@
       
     <!-- 商品左侧图片区域 -->
     <view class="goods-item-left">
+      <radio :checked="item.goods_state" color="#007aff" v-if="showRadio" @click="radioClickHandler"></radio>
       <image :src="item.goods_small_logo || defaultPic" class="goods-pic"></image>
     </view>
     <!-- 商品右侧信息区域 -->
     <view class="goods-item-right">
       <view class="goods-name">{{item.goods_name}}</view>
       <view class="goods-info-box">
+        <!-- 商品价格 -->
         <view class="goods-price">￥{{(item.goods_price || '暂无报价') | tofixed}}</view>
+        <!-- 商品数量 -->
+        <uni-number-box :min="1" :value="item.goods_count" v-if="showNum" @change="numChangeHandler"></uni-number-box>
       </view>
     </view>
       
@@ -24,12 +28,25 @@
         defaultPic: 'https://img3.doubanio.com/f/movie/8dd0c794499fe925ae2ae89ee30cd225750457b4/pics/movie/celebrity-default-medium.png'
       };
     },
+    
     props: {
       item: {
         type: Object,
         default: {}
-      }
+      },
+      // 是否展示图片左侧的 radio
+      showRadio: {
+        type: Boolean,
+        // 如果外界没有指定 show-radio 属性的值，则默认不展示 radio 组件
+        default: false,
+      },
+      // 是否展示价格右侧的 NumberBox 组件
+      showNum: {
+        type: Boolean,
+        default: false,
+      },
     },
+    
     filters: {
       tofixed(num) {
         if (num !== '暂无报价') {
@@ -53,12 +70,38 @@
           return num
         }
       }
+    },
+    
+    methods: {
+      // radio 组件的点击事件
+      radioClickHandler() {
+        // 把商品的 Id 和 勾选状态 作为参数传递给 radio-change 事件处理函数
+        this.$emit('radio-change', {
+          // 商品的 Id
+          goods_id: this.item.goods_id,
+          // 商品最新的勾选状态
+          goods_state: !this.item.goods_state
+        })
+      },
+      
+      // NumberBox 组件的 change 事件
+      numChangeHandler(val) {
+        // 通过 this.$emit() 触发外界通过 @ 绑定的 num-change 事件
+        this.$emit('num-change', {
+          // 商品的 Id
+          goods_id: this.item.goods_id,
+          // 商品的最新数量
+          // +val 作用是转化为 Number 类型
+          goods_count: +val
+        })
+      }
     }
   }
 </script>
 
 <style lang="scss">
   .goods-item {
+    // 让 goods-item 项占满整个屏幕的宽度
     width: 750rpx;
     box-sizing: border-box;
     display: flex;

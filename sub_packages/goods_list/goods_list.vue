@@ -19,11 +19,11 @@
 
 <script>
   // 导入混入对象
-  import { backTopMixin } from '@/mixins/backTop.js'
+  import backTop from '@/mixins/backTop.js'
   
   export default {
     // 混入对象
-    mixins: [backTopMixin],
+    mixins: [backTop],
     
     data() {
       return {

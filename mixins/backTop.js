@@ -1,5 +1,5 @@
 // 返回顶部
-export const backTopMixin = {
+export default {
   data () {
     return {
       // 窗口高度

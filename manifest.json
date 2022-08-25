@@ -53,10 +53,14 @@
         "appid" : "wx8960e08758d006f7",
         "setting" : {
             "urlCheck" : true,
-            "checkSiteMap":false
+            "checkSiteMap" : false,
+            "minified" : false
         },
         "usingComponents" : true,
-        "permission" : {}
+        "permission" : {},
+        "optimization" : {
+            "subPackages" : true
+        }
     },
     "vueVersion" : "2"
 }
