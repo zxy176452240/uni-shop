@@ -1,9 +1,9 @@
 let bindIngXMixins = {}
 
 // #ifdef APP-NVUE
-const BindingX = uni.requireNativePlugin('bindingx');
-const dom = uni.requireNativePlugin('dom');
-const animation = uni.requireNativePlugin('animation');
+const BindingX = uni.requireNativePlugin('bindingx')
+const dom = uni.requireNativePlugin('dom')
+const animation = uni.requireNativePlugin('animation')
 
 bindIngXMixins = {
 	data() {
@@ -30,22 +30,22 @@ bindIngXMixins = {
 		}
 	},
 	created() {
-		this.swipeaction = this.getSwipeAction()
-		if (this.swipeaction.children !== undefined) {
-			this.swipeaction.children.push(this)
+		this.swipe_action = this.getSwipeAction()
+		if (this.swipe_action.children !== undefined) {
+			this.swipe_action.children.push(this)
 		}
 	},
 	mounted() {
 		this.box = this.getEl(this.$refs['selector-box--hock'])
-		this.selector = this.getEl(this.$refs['selector-content--hock']);
-		this.leftButton = this.getEl(this.$refs['selector-left-button--hock']);
-		this.rightButton = this.getEl(this.$refs['selector-right-button--hock']);
+		this.selector = this.getEl(this.$refs['selector-content--hock'])
+		this.leftButton = this.getEl(this.$refs['selector-left-button--hock'])
+		this.rightButton = this.getEl(this.$refs['selector-right-button--hock'])
 		this.init()
 	},
 	// beforeDestroy() {
-	// 	this.swipeaction.children.forEach((item, index) => {
+	// 	this.swipe_action.children.forEach((item, index) => {
 	// 		if (item === this) {
-	// 			this.swipeaction.children.splice(index, 1)
+	// 			this.swipe_action.children.splice(index, 1)
 	// 		}
 	// 	})
 	// },
@@ -53,9 +53,7 @@ bindIngXMixins = {
 		init() {
 			this.$nextTick(() => {
 				this.x = 0
-				this.button = {
-					show: false
-				}
+				this.button = { show: false }
 				setTimeout(() => {
 					this.getSelectorQuery()
 				}, 200)
@@ -75,7 +73,7 @@ bindIngXMixins = {
 			if (this.stop) return
 			this.stop = true
 			if (this.autoClose) {
-				this.swipeaction.closeOther(this)
+				this.swipe_action.closeOther(this)
 			}
 
 			const leftWidth = this.button.left.width
@@ -100,14 +98,14 @@ bindIngXMixins = {
 					property: 'transform.translateX',
 					expression: rightExpression
 				}, ]
-			}, (e) => {
+			}, e => {
 				// nope
 				if (e.state === 'end') {
-					this.x = e.deltaX + this.x;
+					this.x = e.deltaX + this.x
 					this.isclick = true
 					this.bindTiming(e.deltaX)
 				}
-			});
+			})
 		},
 		touchend(e) {
 			if (this.isopen !== 'none' && !this.isclick) {
@@ -237,9 +235,7 @@ bindIngXMixins = {
 		move(ref, value) {
 			return new Promise((resolve, reject) => {
 				animation.transition(ref, {
-					styles: {
-						transform: `translateX(${value})`,
-					},
+					styles: { transform: `translateX(${value})`, },
 					duration: 150, //ms
 					timingFunction: 'linear',
 					needLayout: false,
@@ -265,7 +261,7 @@ bindIngXMixins = {
 			Promise.all([
 				this.getDom('left'),
 				this.getDom('right'),
-			]).then((data) => {
+			]).then(data => {
 				let show = 'none'
 				if (this.autoClose) {
 					show = 'none'
@@ -284,7 +280,7 @@ bindIngXMixins = {
 		},
 		getDom(str) {
 			return new Promise((resolve, reject) => {
-				dom.getComponentRect(this.$refs[`selector-${str}-button--hock`], (data) => {
+				dom.getComponentRect(this.$refs[`selector-${str}-button--hock`], data => {
 					if (data) {
 						this.button[str] = data.size
 						resolve(data)

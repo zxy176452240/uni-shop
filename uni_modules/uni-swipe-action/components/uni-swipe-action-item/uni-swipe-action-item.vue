@@ -147,6 +147,7 @@
 	 */
 
 	export default {
+    // inject: ['swipe_action'],
 		mixins: [mpwxs, bindingx, mpother],
 		emits: ['click', 'change'],
 		props: {
@@ -208,10 +209,10 @@
 
 		methods: {
 			uninstall() {
-				if (this.swipeaction) {
-					this.swipeaction.children.forEach((item, index) => {
+				if (this.swipe_action) {
+					this.swipe_action.children.forEach((item, index) => {
 						if (item === this) {
-							this.swipeaction.children.splice(index, 1)
+							this.swipe_action.children.splice(index, 1)
 						}
 					})
 				}

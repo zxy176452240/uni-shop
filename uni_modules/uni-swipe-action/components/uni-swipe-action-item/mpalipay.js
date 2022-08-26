@@ -20,9 +20,9 @@ export default {
 		}
 	},
 	created() {
-		this.swipeaction = this.getSwipeAction()
-		if (this.swipeaction.children !== undefined) {
-			this.swipeaction.children.push(this)
+		this.swipe_action = this.getSwipeAction()
+		if (this.swipe_action.children !== undefined) {
+			this.swipe_action.children.push(this)
 		}
 	},
 	mounted() {
@@ -33,16 +33,12 @@ export default {
 	},
 	methods: {
 		appTouchStart(e) {
-			const {
-				clientX
-			} = e.changedTouches[0]
+			const { clientX } = e.changedTouches[0]
 			this.clientX = clientX
 			this.timestamp = new Date().getTime()
 		},
 		appTouchEnd(e, index, item, position) {
-			const {
-				clientX
-			} = e.changedTouches[0]
+			const { clientX } = e.changedTouches[0]
 			// fixed by xxxx 模拟点击事件，解决 ios 13 点击区域错位的问题
 			let diff = Math.abs(this.clientX - clientX)
 			let time = (new Date().getTime()) - this.timestamp
@@ -63,9 +59,10 @@ export default {
 			this.isclose = false
 		},
 		touchstart(e) {
+      console.log(e)
 			this.transition = false
 			this.isclose = true
-			this.autoClose && this.swipeaction.closeOther(this)
+			this.autoClose && this.swipe_action.closeOther(this)
 		},
 		touchmove(e) {},
 		touchend(e) {
@@ -160,7 +157,7 @@ export default {
 		},
 		getSlide(x) {},
 		getQuerySelect() {
-			const query = uni.createSelectorQuery().in(this);
+			const query = uni.createSelectorQuery().in(this)
 			query.selectAll('.movable-view--hock').boundingClientRect(data => {
 				this.leftWidth = data[1].width
 				this.rightWidth = data[2].width
@@ -186,7 +183,7 @@ export default {
 					this.transition = true
 					this.open(this.shows)
 				}
-			}).exec();
+			}).exec()
 
 		}
 	}

@@ -1,7 +1,7 @@
 let otherMixins = {}
 
 // #ifndef APP-PLUS|| MP-WEIXIN  ||  H5
-const MIN_DISTANCE = 10;
+const MIN_DISTANCE = 10
 otherMixins = {
 	data() {
 		// TODO 随机生生元素ID，解决百度小程序获取同一个元素位置信息的bug
@@ -34,10 +34,10 @@ otherMixins = {
 			this.init()
 		}
 	},
-	mounted() {
-		this.swipeaction = this.getSwipeAction()
-		if (this.swipeaction.children !== undefined) {
-			this.swipeaction.children.push(this)
+	created() {
+		this.swipe_action = this.getSwipeAction()
+		if (this.swipe_action.children !== undefined) {
+			this.swipe_action.children.push(this)
 		}
 		this.init()
 	},
@@ -54,19 +54,15 @@ otherMixins = {
 
 		closeSwipe(e) {
 			if (!this.autoClose) return
-			this.swipeaction.closeOther(this)
+			this.swipe_action.closeOther(this)
 		},
 		appTouchStart(e) {
-			const {
-				clientX
-			} = e.changedTouches[0]
+			const { clientX } = e.changedTouches[0]
 			this.clientX = clientX
 			this.timestamp = new Date().getTime()
 		},
 		appTouchEnd(e, index, item, position) {
-			const {
-				clientX
-			} = e.changedTouches[0]
+			const { clientX } = e.changedTouches[0]
 			// fixed by xxxx 模拟点击事件，解决 ios 13 点击区域错位的问题
 			let diff = Math.abs(this.clientX - clientX)
 			let time = (new Date().getTime()) - this.timestamp
@@ -88,9 +84,9 @@ otherMixins = {
 		touchmove(e) {
 			if (this.disabled) return
 			// 是否可以滑动页面
-			this.stopTouchMove(e);
+			this.stopTouchMove(e)
 			if (this.direction !== 'horizontal') {
-				return;
+				return
 			}
 			this.move(this.x + this.deltaX)
 			return false
@@ -108,7 +104,7 @@ otherMixins = {
 			const leftWidth = this.leftWidth
 			const rightWidth = this.rightWidth
 			// 获取可滑动范围
-			this.left = this.range(value, -rightWidth, leftWidth);
+			this.left = this.range(value, -rightWidth, leftWidth)
 		},
 
 		/**
@@ -118,7 +114,7 @@ otherMixins = {
 		 * @param {Object} max
 		 */
 		range(num, min, max) {
-			return Math.min(Math.max(num, min), max);
+			return Math.min(Math.max(num, min), max)
 		},
 		/**
 		 * 移动方向判断
@@ -160,10 +156,10 @@ otherMixins = {
 			let left = ''
 			this.isopen = this.isopen ? this.isopen : 'none'
 			switch (type) {
-				case "left":
+				case 'left':
 					left = leftWidth
 					break
-				case "right":
+				case 'right':
 					left = -rightWidth
 					break
 				default:
@@ -189,12 +185,12 @@ otherMixins = {
 		},
 		getDirection(x, y) {
 			if (x > y && x > MIN_DISTANCE) {
-				return 'horizontal';
+				return 'horizontal'
 			}
 			if (y > x && y > MIN_DISTANCE) {
-				return 'vertical';
+				return 'vertical'
 			}
-			return '';
+			return ''
 		},
 
 		/**
@@ -202,11 +198,11 @@ otherMixins = {
 		 * @param {Object} event
 		 */
 		resetTouchStatus() {
-			this.direction = '';
-			this.deltaX = 0;
-			this.deltaY = 0;
-			this.offsetX = 0;
-			this.offsetY = 0;
+			this.direction = ''
+			this.deltaX = 0
+			this.deltaY = 0
+			this.offsetX = 0
+			this.offsetY = 0
 		},
 
 		/**
@@ -214,10 +210,10 @@ otherMixins = {
 		 * @param {Object} event
 		 */
 		stopTouchStart(event) {
-			this.resetTouchStatus();
-			const touch = event.touches[0];
-			this.startX = touch.clientX;
-			this.startY = touch.clientY;
+			this.resetTouchStatus()
+			const touch = event.touches[0]
+			this.startX = touch.clientX
+			this.startY = touch.clientY
 		},
 
 		/**
@@ -225,12 +221,12 @@ otherMixins = {
 		 * @param {Object} event
 		 */
 		stopTouchMove(event) {
-			const touch = event.touches[0];
-			this.deltaX = touch.clientX - this.startX;
-			this.deltaY = touch.clientY - this.startY;
-			this.offsetX = Math.abs(this.deltaX);
-			this.offsetY = Math.abs(this.deltaY);
-			this.direction = this.direction || this.getDirection(this.offsetX, this.offsetY);
+			const touch = event.touches[0]
+			this.deltaX = touch.clientX - this.startX
+			this.deltaY = touch.clientY - this.startY
+			this.offsetX = Math.abs(this.deltaX)
+			this.offsetY = Math.abs(this.deltaY)
+			this.direction = this.direction || this.getDirection(this.offsetX, this.offsetY)
 		},
 
 		getSelectorQuery() {

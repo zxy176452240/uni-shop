@@ -1,18 +1,14 @@
 let mpMixins = {}
 let is_pc = null
 // #ifdef H5
-import {
-	isPC
-} from "./isPC"
+import { isPC } from './isPC'
 is_pc = isPC()
 // #endif
 // #ifdef APP-VUE|| MP-WEIXIN || H5
 
 mpMixins = {
 	data() {
-		return {
-			is_show: 'none'
-		}
+		return { is_show: 'none' }
 	},
 	watch: {
 		show(newVal) {
@@ -20,9 +16,9 @@ mpMixins = {
 		}
 	},
 	created() {
-		this.swipeaction = this.getSwipeAction()
-		if (this.swipeaction.children !== undefined) {
-			this.swipeaction.children.push(this)
+		this.swipe_action = this.getSwipeAction()
+		if (this.swipe_action.children !== undefined) {
+			this.swipe_action.children.push(this)
 		}
 	},
 	mounted() {
@@ -32,7 +28,7 @@ mpMixins = {
 		// wxs 中调用
 		closeSwipe(e) {
 			if (!this.autoClose) return
-			this.swipeaction.closeOther(this)
+			this.swipe_action.closeOther(this)
 		},
 
 		change(e) {
@@ -44,17 +40,13 @@ mpMixins = {
 
 		appTouchStart(e) {
 			if (is_pc) return
-			const {
-				clientX
-			} = e.changedTouches[0]
+			const { clientX } = e.changedTouches[0]
 			this.clientX = clientX
 			this.timestamp = new Date().getTime()
 		},
 		appTouchEnd(e, index, item, position) {
 			if (is_pc) return
-			const {
-				clientX
-			} = e.changedTouches[0]
+			const { clientX } = e.changedTouches[0]
 			// fixed by xxxx 模拟点击事件，解决 ios 13 点击区域错位的问题
 			let diff = Math.abs(this.clientX - clientX)
 			let time = (new Date().getTime()) - this.timestamp
